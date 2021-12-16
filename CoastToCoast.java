@@ -8,7 +8,7 @@ import java.util.regex.*;
 
 import java.io.IOException;
 
-public class A3 {
+public class CoastToCoast {
 
     public ArrayList<String> getData() throws IOException {
         ArrayList<String> urls = new ArrayList<>();
@@ -210,7 +210,7 @@ public class A3 {
     }
 
     public static void main(String[] args) throws IOException {
-        A3 coast = new A3();
+        CoastToCoast coast = new CoastToCoast();
         Scanner scan = new Scanner(System.in);
         System.out.println("Who is your favourite artist? ");
         String userArtist = scan.nextLine();
