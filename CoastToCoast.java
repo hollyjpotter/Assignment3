@@ -8,7 +8,7 @@ import java.util.regex.*;
 
 import java.io.IOException;
 
-public class CoastToCoast {
+public class A3 {
 
     public ArrayList<String> getData() throws IOException {
         ArrayList<String> urls = new ArrayList<>();
@@ -183,8 +183,34 @@ public class CoastToCoast {
         return collabs;
     }
 
+    public void fixPrint(String name) {
+        if(name.contains("&amp;")) {
+            String[] first = name.split("&amp;");
+            for(String n : first) {
+                System.out.println(n.strip());
+            }
+        } else if(name.contains(",")) {
+            String[] first = name.split(",");
+            for(String n : first) {
+                System.out.println(n.strip());
+            }
+        } else if(name.contains(",") && name.contains("&amp;")) {
+            String[] first = name.split(",");
+            for(String n : first) {
+                if(n.contains(",")) {
+                    String[] second = name.split("&amp;");
+                    for(String two: second) {
+                        System.out.println(n.strip());
+                    }
+                }
+            }
+        } else {
+            System.out.println(name);
+        }
+    }
+
     public static void main(String[] args) throws IOException {
-        CoastToCoast coast = new CoastToCoast();
+        A3 coast = new A3();
         Scanner scan = new Scanner(System.in);
         System.out.println("Who is your favourite artist? ");
         String userArtist = scan.nextLine();
@@ -193,7 +219,7 @@ public class CoastToCoast {
         Hashtable<String, LinkedList<String>> listAll = coast.createHash(listOfArtists);
         ArrayList<String> recommendations = coast.recomendation(userArtist, listAll);
         for (String r: recommendations){
-            System.out.println(r);
+            coast.fixPrint(r);
         }
     }
 }
